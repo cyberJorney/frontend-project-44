@@ -14,6 +14,7 @@
     "code": "bin/brain-games.js"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "readline-sync": "^1.4.10"
   }
 }
