@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "brain-games": "bin/brain-games.js"
+    "brain-games": "bin/brain-games.js",
+    "brain-even": "bin/brain-even.js"
   },
   "dependencies": {
     "lodash": "^4.17.21",
@@ -19,6 +20,11 @@
   "devDependencies": {
     "eslint": "^8.39.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5"
+    "eslint-plugin-import": "^2.27.5",
+    "linter-bundle": "^2.29.0",
+    "stylelint": "^15.6.1"
+  },
+  "overrides": {
+    "stylelint": "^15.6.1"
   }
 }
