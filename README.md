@@ -6,3 +6,6 @@
 
 brain-even test:
 https://asciinema.org/a/Kf8TalBWN9yhYMrles1qkhfJY
+
+brain-calc test:
+https://asciinema.org/a/tIcQA0QASDvNtmdeeoaCCiEhN

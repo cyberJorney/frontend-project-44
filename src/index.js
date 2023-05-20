@@ -22,16 +22,16 @@ const brainCalc = () => {
   for (let i = 3; i > 0; i -= 1) {
     const arr = ['+', '-', '*'];
 
-    i = Math.floor(Math.random() * arr.length);
+    const mathSign = Math.floor(Math.random() * arr.length);
 
     const randomNumberOne = Math.floor(Math.random() * 101);
     const randomNumberTwo = Math.floor(Math.random() * 101);
 
-    console.log(`${'Question: '}${randomNumberOne}${' '}${arr[i]}${' '}${randomNumberTwo}`);
+    console.log(`${'Question: '}${randomNumberOne}${' '}${arr[mathSign]}${' '}${randomNumberTwo}`);
 
     const tryToGuess = Number(readlineSync.question('Your answer: '));
 
-    const rightAnswer = eval(randomNumberOne + arr[i] + randomNumberTwo);
+    const rightAnswer = eval(randomNumberOne + arr[mathSign] + randomNumberTwo);
 
     if (rightAnswer === tryToGuess) {
       console.log('Correct!');
