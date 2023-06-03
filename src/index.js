@@ -1,11 +1,11 @@
 import * as readlineSync from 'readline-sync';
 
-const userName = readlineSync.question('May I have your name? ');
+let userName;
 
 const greetings = () => {
   console.log('Welcome to the Brain Games!');
 
-  userName;
+  userName = readlineSync.question('May I have your name? ');
 
   console.log(`${'Hello, '}${userName}${'!'}`);
 };
@@ -14,33 +14,24 @@ const congratulation = () => {
   console.log(`${'Congratulations, '}${userName}${'!'}`);
 };
 
-const brainCalc = () => {
-  greetings();
+// Функция определения наибольшего общего делителя (НОД)
 
-  console.log(`${'What is the result of the expression?'}`);
-
-  for (let i = 3; i > 0; i -= 1) {
-    const arr = ['+', '-', '*'];
-
-    const mathSign = Math.floor(Math.random() * arr.length);
-
-    const randomNumberOne = Math.floor(Math.random() * 101);
-    const randomNumberTwo = Math.floor(Math.random() * 101);
-
-    console.log(`${'Question: '}${randomNumberOne}${' '}${arr[mathSign]}${' '}${randomNumberTwo}`);
-
-    const tryToGuess = Number(readlineSync.question('Your answer: '));
-
-    const rightAnswer = eval(randomNumberOne + arr[mathSign] + randomNumberTwo);
-
-    if (rightAnswer === tryToGuess) {
-      console.log('Correct!');
-    } else {
-      return console.log((`'${tryToGuess}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}!`));
-    }
+const nod = (n, m) => {
+  if (m !== 0) {
+    const k = n % m;
+    return nod(m, k);
   }
-  return congratulation();
+  return n;
 };
+
+// получение рандомного числа из диапазона
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Игра - "Определи четность"
 
 const brainEven = () => {
   greetings();
@@ -48,7 +39,7 @@ const brainEven = () => {
   console.log(`${'Answer "yes" if the number is even, otherwise answer "no".'}`);
 
   for (let i = 3; i > 0; i -= 1) {
-    const randomNumber = Math.floor(Math.random() * 101);
+    const randomNumber = getRandomIntInclusive(1, 100);
 
     console.log(`${'Question: '}${randomNumber}`);
     const tryToGuess = readlineSync.question('Your answer: ');
@@ -63,4 +54,62 @@ const brainEven = () => {
   }
   return congratulation();
 };
-export { brainEven, brainCalc };
+
+// Игра - "Поработай калькулятором"
+
+const brainCalc = () => {
+  greetings();
+
+  console.log(`${'What is the result of the expression?'}`);
+
+  for (let i = 3; i > 0; i -= 1) {
+    // получение рандомного знака из массива
+    const arr = ['+', '-', '*'];
+
+    const randomMathSign = Math.floor(Math.random() * arr.length);
+
+    const firstNumber = getRandomIntInclusive(1, 100);
+    const secondNumber = getRandomIntInclusive(1, 100);
+
+    console.log(`${'Question: '}${firstNumber}${' '}${arr[randomMathSign]}${' '}${secondNumber}`);
+
+    const tryToGuess = Number(readlineSync.question('Your answer: '));
+
+    const rightAnswer = eval(`${firstNumber}${arr[randomMathSign]}${secondNumber}`);
+
+    if (rightAnswer === tryToGuess) {
+      console.log('Correct!');
+    } else {
+      return console.log((`'${tryToGuess}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}!`));
+    }
+  }
+  return congratulation();
+};
+
+// Игра - "Наибольший общий делитель"
+
+const brainGSD = () => {
+  greetings();
+
+  console.log(`${'Find the greatest common divisor of given numbers.'}`);
+
+  for (let i = 3; i > 0; i -= 1) {
+    const firstNumber = getRandomIntInclusive(1, 100);
+    const secondNumber = getRandomIntInclusive(1, 100);
+
+    console.log(`${'Question: '}${firstNumber}${' '}${secondNumber}`);
+
+    const tryToGuess = Number(readlineSync.question('Your answer: '));
+
+    const rightAnswer = nod(firstNumber, secondNumber);
+
+    if (rightAnswer === tryToGuess) {
+      console.log('Correct!');
+    } else {
+      return console.log((`'${tryToGuess}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}!`));
+    }
+  }
+  return congratulation();
+};
+
+export { brainEven, brainCalc, brainGSD };
