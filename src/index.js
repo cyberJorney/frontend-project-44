@@ -2,6 +2,8 @@ import * as readlineSync from 'readline-sync';
 
 let userName;
 
+// функция - приветствие
+
 const greetings = () => {
   console.log('Welcome to the Brain Games!');
 
@@ -14,7 +16,7 @@ const congratulation = () => {
   console.log(`${'Congratulations, '}${userName}${'!'}`);
 };
 
-// Функция определения наибольшего общего делителя (НОД)
+// функция определения наибольшего общего делителя (НОД)
 
 const nod = (n, m) => {
   if (m !== 0) {
@@ -24,12 +26,26 @@ const nod = (n, m) => {
   return n;
 };
 
-// получение рандомного числа из диапазона
+// функция получения рандомного числа из диапазона
+
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+// функция формирования массива с арифметической прогрессией
+
+let progressionMember = getRandomIntInclusive(1, 30);
+const Progression = () => {
+  const arrProgression = [];
+  const progressionStep = getRandomIntInclusive(1, 15);
+  for (let i = 0; i < 10; i += 1) {
+    progressionMember += progressionStep;
+    arrProgression.push(progressionMember);
+  }
+  return arrProgression;
+};
 
 // Игра - "Определи четность"
 
@@ -112,4 +128,34 @@ const brainGSD = () => {
   return congratulation();
 };
 
-export { brainEven, brainCalc, brainGSD };
+// Игра - "Арифметическая прогрессия"
+
+const brainProgression = () => {
+  greetings();
+
+  console.log(`${'What number is missing in the progression?'}`);
+
+  for (let i = 3; i > 0; i -= 1) {
+    const arr = Progression();
+    const randomMemberOfProgression = Math.floor(Math.random() * arr.length);
+    const arrWithQuestion = [...arr];
+    arrWithQuestion[randomMemberOfProgression] = '..';
+
+    console.log(`${'Question: '}${arrWithQuestion.join(' ')}`);
+
+    const tryToGuess = Number(readlineSync.question('Your answer: '));
+
+    const rightAnswer = arr[randomMemberOfProgression];
+
+    if (rightAnswer === tryToGuess) {
+      console.log('Correct!');
+    } else {
+      return console.log((`'${tryToGuess}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}!`));
+    }
+  }
+  return congratulation();
+};
+
+export {
+  brainEven, brainCalc, brainGSD, brainProgression,
+};
