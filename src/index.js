@@ -1,5 +1,6 @@
 import * as readlineSync from 'readline-sync';
 
+// eslint-disable-next-line import/no-mutable-exports
 let userName;
 
 const rangeStartNumber = 1;
@@ -34,9 +35,7 @@ const nod = (n, m) => {
 // функция получения рандомного числа из диапазона
 
 function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 // функция формирования массива с арифметической прогрессией
@@ -45,6 +44,7 @@ let progressionMember = getRandomIntInclusive(1, 30);
 
 const progression = () => {
   const arrProgression = [];
+  // eslint-disable-next-line max-len
   const progressionStep = getRandomIntInclusive(rangeStartNumberOfProgression, rangeFinishNumberOfProgression);
   for (let i = 0; i < 10; i += 1) {
     progressionMember += progressionStep;
@@ -59,6 +59,7 @@ const checkIfNumberIsPrime = (number) => {
   if (number < 2) {
     return 'no';
   }
+  // eslint-disable-next-line no-plusplus
   for (let i = 2; i < number; i++) {
     if (number % i === 0) {
       return 'no';
