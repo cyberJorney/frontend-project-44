@@ -21,6 +21,7 @@ const brainCalc = () => {
 
     const tryToGuess = Number(readlineSync.question('Your answer: '));
 
+    // eslint-disable-next-line no-eval
     const rightAnswer = eval(`${firstNumber}${arr[randomMathSign]}${secondNumber}`);
 
     if (rightAnswer === tryToGuess) {
