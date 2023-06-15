@@ -9,7 +9,7 @@ import {
   rangeFinishNumber,
 } from '../src/index.js';
 
-const brainGSD = () => {
+const brainGCD = () => {
   greetings();
 
   console.log(`${'Find the greatest common divisor of given numbers.'}`);
@@ -33,4 +33,4 @@ const brainGSD = () => {
   return congratulation();
 };
 
-export default brainGSD;
+export default brainGCD;

@@ -10,8 +10,8 @@ https://asciinema.org/a/Kf8TalBWN9yhYMrles1qkhfJY
 brain-calc test:
 https://asciinema.org/a/tIcQA0QASDvNtmdeeoaCCiEhN
 
-brain-gsd test:
-https://asciinema.org/a/bvWQjBxgt4FqhUBGgliPuUrmt
+brain-gcd test:
+https://asciinema.org/a/8cFT8QX3svTdSiIx73v88ICyO
 
 brain-progression test:
 https://asciinema.org/a/whCrh5uScEhT53NtKa3NtWJm9
